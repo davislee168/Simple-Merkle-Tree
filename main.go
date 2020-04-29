@@ -1,10 +1,10 @@
 package main
 
 import (
-	“crypto/sha256”
-	“math/rand”
-	“log”
-	“merkletree”
+	"crypto/sha256"
+	"math/rand"
+	"log"
+	"merkletree"
 )
 // TextContent implements the content interface provided by markletree and represents the content
 // stored in the tree
@@ -15,7 +15,7 @@ type TextContent struct {
 func (t textContent) CalcHash() ([]byte, error) {
        hashVal := sha256.New()
        if _, err := h.write([]byte(t.x)); err != nil {
-       return nil, err
+	       return nil, err
        }
        return hashVal.Sum(nil), nil
 }
@@ -35,19 +35,19 @@ func main() {
        */
 
        // Suppose number of leafs are eight as below
-       listCont = append(list, TextContent{x: “I”})
-       listCont = append(list, TextContent{x: “am”})
-       listCont = append(list, TextContent{x: “very”})
-       listCont = append(list, TextContent{x: “interested”})
-       listcont = append(list, TextContent{x: “in”})
-       listCont = append(list, TextContent{x: “working”})
-       listCont = append(list, TextContent{x: “at”})
-       listCont = append(list, TextContent{x: “Securitas”})
+       listCont = append(list, TextContent{x: "I"})
+       listCont = append(list, TextContent{x: "am"})
+       listCont = append(list, TextContent{x: "very"})
+       listCont = append(list, TextContent{x: "interested"})
+       listcont = append(list, TextContent{x: "in"})
+       listCont = append(list, TextContent{x: "working"})
+       listCont = append(list, TextContent{x: "at"})
+       listCont = append(list, TextContent{x: "Securitas"})
 
        // Build a new Merkle tree using the list of content
        tree, err := merkletree.BuildTree(listCont)
        if err != nil {
-       log.Fatal(err)
+	       log.Fatal(err)
        }
 
        // get the root of Merkle tree
